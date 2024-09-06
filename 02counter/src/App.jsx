@@ -5,14 +5,19 @@ import './App.css'
 
 function App() {
 
-  let [counter, setCounter] = useState(7)
+  const [counter, setCounter] = useState(7)
 
 
   // let counter = 7;
   const addValue = ()=>{
     // console.log("Value added", counter);
     // counter = counter + 1
-    setCounter(counter+1);
+    setCounter(counter+1);//8
+    setCounter(counter+1);//9
+    setCounter(counter+1);//10
+    setCounter(counter+1);//11
+    //not 11 but 8 as counter for all will remain same so they all will be batched together as batching is done here acc. to diffing algo in fibre
+    setCounter( prevCounter => prevCounter+1)// to use previous value
   };
   const removeValue = ()=>{
     // console.log("Value removed", counter);
