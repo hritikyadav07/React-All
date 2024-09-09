@@ -8,7 +8,7 @@ import Home from './components/Home/Home.jsx'
 import About from './components/About/About.jsx'
 import Contact from './components/Contact/Contact.jsx'
 import User from './components/User/User.jsx'
-import Github from './components/Github/Github.jsx'
+import Github, { githubInfoLoader } from './components/Github/Github.jsx'
 
 // one way to inject routers
 
@@ -41,7 +41,11 @@ const router = createBrowserRouter(
       <Route path='contact' element={<Contact/>}></Route>
       {/* user has access oof userid */}
       <Route path='user/:userid' element={<User/>}></Route>
-      <Route path='github' element={<Github/>}></Route>
+      <Route 
+      // new property of router in case of api calls it starts fetcing as we hover above this tab and stores it in cache, can write full api call here 
+      loader={githubInfoLoader}
+      path='github' 
+      element={<Github/>}></Route>
     </Route>
   )
 )
