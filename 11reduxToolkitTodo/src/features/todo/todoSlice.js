@@ -2,7 +2,12 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 // create it just like a object , this is my state
 const initialState = {
-    todos: [{ id: 1, text: "Hello world!"}]
+    todos: [
+        { id: 0, text: "Hello world!"},
+        { id: 1, text: "Learn React" },
+        { id: 2, text: "Learn Redux" },
+        { id: 3, text: "Build a Todo App" }
+    ]
 }
 
 // will take objects most of the time
@@ -21,15 +26,13 @@ export const todoSlice = createSlice({
         removeTodo: (state, action) => {
             state.todos = state.todos.filter((todo) => todo.id !== action.payload)
         },
+
         updateTodo: (state, action ) => {
             const { id, newText } = action.payload; // Destructure id and new text from action.payload
             state.todos = state.todos.map((todo) => 
                 todo.id === id ? { ...todo, text: newText } : todo // Update text if id matches, otherwise return the todo unchanged
             );
-        }
-        // setTodos((prev) => prev.map((prevTodo) => (
-        //     prevTodo.id === id ? todo : prevTodo 
-        //   )))
+        },
     }
 })
 
