@@ -23,7 +23,7 @@ export class AuthService{
             }
         } catch (error) {
             console.log("Appwrite Service :: createAccount :: error", error);
-            // throw error;
+            throw error;
         }
     }
 
